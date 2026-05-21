@@ -1,6 +1,12 @@
 import { App } from './App.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+const startApp = () => {
     const app = new App();
     app.start();
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp, { once: true });
+} else {
+    startApp();
+}
