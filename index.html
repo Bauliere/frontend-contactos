@@ -22,10 +22,39 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link active" href="#contactos">Contactos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#api">API REST</a></li>
                     <li class="nav-item"><a class="nav-link" href="#programador">Programador</a></li>
+                    <li class="nav-item dropdown ms-lg-2">
+                        <button class="btn btn-outline-light theme-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-brush"></i>
+                            Tema
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end theme-menu">
+                            <button class="dropdown-item theme-choice is-active" type="button" data-theme-choice="forest">
+                                <span class="theme-swatch swatch-forest"></span> Verde principal
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-mint">
+                                <span class="theme-swatch swatch-neon-mint"></span> Menta neon
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-cyan">
+                                <span class="theme-swatch swatch-neon-cyan"></span> Cian neon
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-violet">
+                                <span class="theme-swatch swatch-neon-violet"></span> Violeta neon
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-pink">
+                                <span class="theme-swatch swatch-neon-pink"></span> Rosa neon
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-lime">
+                                <span class="theme-swatch swatch-neon-lime"></span> Lima neon
+                            </button>
+                            <button class="dropdown-item theme-choice" type="button" data-theme-choice="neon-amber">
+                                <span class="theme-swatch swatch-neon-amber"></span> Ambar neon
+                            </button>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -184,21 +213,9 @@
                             <label class="form-label" for="categoryDescription">Descripcion</label>
                             <textarea class="form-control" id="categoryDescription" maxlength="150" rows="3" placeholder="Descripcion breve"></textarea>
                         </div>
-                        <div class="col-12 col-md-5">
+                        <div class="col-12">
                             <label class="form-label" for="categoryColor">Color asignado</label>
                             <input class="form-control form-control-color color-field" id="categoryColor" type="color" value="#29df9c" title="Selecciona un color">
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <span class="form-label d-block">Paletas rapidas</span>
-                            <div class="color-palette" id="categoryPalette" aria-label="Paletas de colores">
-                                <button type="button" class="palette-swatch is-active" data-color="#29df9c" style="--swatch-color: #29df9c" aria-label="Verde principal"></button>
-                                <button type="button" class="palette-swatch" data-color="#37ffbf" style="--swatch-color: #37ffbf" aria-label="Menta neon"></button>
-                                <button type="button" class="palette-swatch" data-color="#32ddff" style="--swatch-color: #32ddff" aria-label="Cian neon"></button>
-                                <button type="button" class="palette-swatch" data-color="#bb60ff" style="--swatch-color: #bb60ff" aria-label="Violeta neon"></button>
-                                <button type="button" class="palette-swatch" data-color="#ff4db4" style="--swatch-color: #ff4db4" aria-label="Rosa neon"></button>
-                                <button type="button" class="palette-swatch" data-color="#c7ff30" style="--swatch-color: #c7ff30" aria-label="Lima neon"></button>
-                                <button type="button" class="palette-swatch" data-color="#ffb72b" style="--swatch-color: #ffb72b" aria-label="Ambar neon"></button>
-                            </div>
                         </div>
                     </div>
                 </div>

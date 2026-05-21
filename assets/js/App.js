@@ -9,6 +9,7 @@ import { API_BASE } from './config.js';
 
 export class App {
     constructor() {
+        this.themes = ['forest', 'neon-mint', 'neon-cyan', 'neon-violet', 'neon-pink', 'neon-lime', 'neon-amber'];
         this.api = new ApiClient(API_BASE);
         this.service = new ContactService(this.api);
         this.contacts = [];
@@ -33,6 +34,7 @@ export class App {
     }
 
     async start() {
+        this.setTheme(localStorage.getItem('agenda-theme') || 'forest');
         document.querySelector('#apiBaseLabel').textContent = API_BASE;
         this.bindEvents();
         await this.load();
@@ -45,6 +47,10 @@ export class App {
 
         document.querySelector('#addCategoryButton').addEventListener('click', () => {
             this.categoryModal.open();
+        });
+
+        document.querySelectorAll('[data-theme-choice]').forEach((button) => {
+            button.addEventListener('click', () => this.setTheme(button.dataset.themeChoice));
         });
 
         document.querySelector('#refreshButton').addEventListener('click', () => this.load());
@@ -159,6 +165,15 @@ export class App {
 
     findContact(id) {
         return this.contacts.find((contact) => contact.id_contacto === Number(id));
+    }
+
+    setTheme(theme) {
+        const selectedTheme = this.themes.includes(theme) ? theme : 'forest';
+        document.documentElement.dataset.theme = selectedTheme;
+        localStorage.setItem('agenda-theme', selectedTheme);
+        document.querySelectorAll('[data-theme-choice]').forEach((button) => {
+            button.classList.toggle('is-active', button.dataset.themeChoice === selectedTheme);
+        });
     }
 
     escape(value) {

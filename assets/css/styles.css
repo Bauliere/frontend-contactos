@@ -1,4 +1,5 @@
-:root {
+:root,
+html[data-theme="forest"] {
     color-scheme: dark;
     --bg: #06100d;
     --panel: rgba(16, 48, 39, 0.78);
@@ -9,6 +10,78 @@
     --primary: #29df9c;
     --accent: #73ffcf;
     --danger: #ff5d6c;
+}
+
+html[data-theme="neon-mint"] {
+    --bg: #031511;
+    --panel: rgba(7, 56, 45, 0.78);
+    --panel-strong: rgba(13, 78, 63, 0.92);
+    --stroke: rgba(80, 255, 204, 0.27);
+    --text: #effffb;
+    --muted: #91d9c9;
+    --primary: #37ffbf;
+    --accent: #8affdf;
+    --danger: #ff4f8b;
+}
+
+html[data-theme="neon-cyan"] {
+    --bg: #03121a;
+    --panel: rgba(7, 44, 63, 0.78);
+    --panel-strong: rgba(12, 62, 86, 0.92);
+    --stroke: rgba(60, 221, 255, 0.28);
+    --text: #f1fbff;
+    --muted: #9bcfe0;
+    --primary: #32ddff;
+    --accent: #78f2ff;
+    --danger: #ff5f7e;
+}
+
+html[data-theme="neon-violet"] {
+    --bg: #13091c;
+    --panel: rgba(47, 25, 70, 0.78);
+    --panel-strong: rgba(67, 36, 98, 0.92);
+    --stroke: rgba(187, 96, 255, 0.28);
+    --text: #fbf5ff;
+    --muted: #d2b7e7;
+    --primary: #bb60ff;
+    --accent: #ff73f6;
+    --danger: #ff6a6a;
+}
+
+html[data-theme="neon-pink"] {
+    --bg: #1b0713;
+    --panel: rgba(69, 18, 49, 0.78);
+    --panel-strong: rgba(96, 25, 68, 0.92);
+    --stroke: rgba(255, 77, 180, 0.27);
+    --text: #fff5fb;
+    --muted: #ebb4d3;
+    --primary: #ff4db4;
+    --accent: #ff8fdc;
+    --danger: #ffb84d;
+}
+
+html[data-theme="neon-lime"] {
+    --bg: #101604;
+    --panel: rgba(43, 58, 13, 0.78);
+    --panel-strong: rgba(64, 82, 18, 0.92);
+    --stroke: rgba(199, 255, 48, 0.27);
+    --text: #fbfff0;
+    --muted: #cbdc9b;
+    --primary: #c7ff30;
+    --accent: #efff7a;
+    --danger: #ff5f87;
+}
+
+html[data-theme="neon-amber"] {
+    --bg: #1a0d03;
+    --panel: rgba(69, 38, 8, 0.78);
+    --panel-strong: rgba(96, 55, 12, 0.92);
+    --stroke: rgba(255, 183, 43, 0.27);
+    --text: #fff9ec;
+    --muted: #e8c994;
+    --primary: #ffb72b;
+    --accent: #ffe066;
+    --danger: #ff5d7a;
 }
 
 body {
@@ -47,6 +120,51 @@ body {
 .navbar-nav .nav-link:hover {
     color: var(--text);
 }
+
+.theme-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.45rem;
+}
+
+.theme-menu {
+    min-width: 13rem;
+    border: 1px solid var(--stroke);
+    background: rgba(3, 13, 10, 0.96);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.35);
+}
+
+.theme-choice {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--text);
+    font-weight: 750;
+}
+
+.theme-choice:hover,
+.theme-choice:focus,
+.theme-choice.is-active {
+    color: var(--text);
+    background: color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.theme-swatch {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 1.15rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.swatch-forest { background: linear-gradient(135deg, #29df9c, #73ffcf, #06100d); }
+.swatch-neon-mint { background: linear-gradient(135deg, #37ffbf, #8affdf, #031511); }
+.swatch-neon-cyan { background: linear-gradient(135deg, #32ddff, #78f2ff, #03121a); }
+.swatch-neon-violet { background: linear-gradient(135deg, #bb60ff, #ff73f6, #13091c); }
+.swatch-neon-pink { background: linear-gradient(135deg, #ff4db4, #ff8fdc, #1b0713); }
+.swatch-neon-lime { background: linear-gradient(135deg, #c7ff30, #efff7a, #101604); }
+.swatch-neon-amber { background: linear-gradient(135deg, #ffb72b, #ffe066, #1a0d03); }
 
 .hero-panel,
 .glass-panel,
@@ -216,29 +334,6 @@ body {
     padding: 0.35rem;
 }
 
-.color-palette {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(2.25rem, 1fr));
-    gap: 0.55rem;
-}
-
-.palette-swatch {
-    min-height: 2.45rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 0.8rem;
-    background:
-        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.9), transparent 0.45rem),
-        linear-gradient(135deg, var(--swatch-color), color-mix(in srgb, var(--swatch-color) 58%, #06100d));
-    box-shadow: 0 0 1.2rem color-mix(in srgb, var(--swatch-color) 22%, transparent);
-}
-
-.palette-swatch.is-active {
-    border-color: var(--text);
-    box-shadow:
-        0 0 0 3px color-mix(in srgb, var(--swatch-color) 28%, transparent),
-        0 0 1.3rem color-mix(in srgb, var(--swatch-color) 32%, transparent);
-}
-
 .action-button {
     display: inline-grid;
     place-items: center;
@@ -314,7 +409,4 @@ body {
         min-width: 18rem;
     }
 
-    .color-palette {
-        grid-template-columns: repeat(4, minmax(2.25rem, 1fr));
-    }
 }
