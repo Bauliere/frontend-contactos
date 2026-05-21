@@ -38,10 +38,16 @@
                 <h1>Contactos conectados a la API REST</h1>
                 <p>Frontend estatico para GitHub Pages consumiendo el backend publico de Hostinger.</p>
             </div>
-            <button class="btn btn-neon btn-lg" id="addContactButton" type="button">
-                <i class="bi bi-plus-lg"></i>
-                Agregar registro
-            </button>
+            <div class="hero-actions">
+                <button class="btn btn-outline-light btn-lg" id="addCategoryButton" type="button">
+                    <i class="bi bi-tags"></i>
+                    Nueva categoria
+                </button>
+                <button class="btn btn-neon btn-lg" id="addContactButton" type="button">
+                    <i class="bi bi-plus-lg"></i>
+                    Agregar registro
+                </button>
+            </div>
         </section>
 
         <section class="glass-panel mb-4">
@@ -155,6 +161,52 @@
                     <button class="btn btn-neon" type="submit">
                         <i class="bi bi-check2-circle"></i>
                         Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content glass-modal" id="categoryForm">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="categoryModalTitle">Agregar categoria</h2>
+                    <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label" for="categoryName">Nombre de categoria</label>
+                            <input class="form-control" id="categoryName" maxlength="50" required placeholder="Ej: Familia, Trabajo, Escuela">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="categoryDescription">Descripcion</label>
+                            <textarea class="form-control" id="categoryDescription" maxlength="150" rows="3" placeholder="Descripcion breve"></textarea>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <label class="form-label" for="categoryColor">Color asignado</label>
+                            <input class="form-control form-control-color color-field" id="categoryColor" type="color" value="#29df9c" title="Selecciona un color">
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <span class="form-label d-block">Paletas rapidas</span>
+                            <div class="color-palette" id="categoryPalette" aria-label="Paletas de colores">
+                                <button type="button" class="palette-swatch is-active" data-color="#29df9c" style="--swatch-color: #29df9c" aria-label="Verde principal"></button>
+                                <button type="button" class="palette-swatch" data-color="#37ffbf" style="--swatch-color: #37ffbf" aria-label="Menta neon"></button>
+                                <button type="button" class="palette-swatch" data-color="#32ddff" style="--swatch-color: #32ddff" aria-label="Cian neon"></button>
+                                <button type="button" class="palette-swatch" data-color="#bb60ff" style="--swatch-color: #bb60ff" aria-label="Violeta neon"></button>
+                                <button type="button" class="palette-swatch" data-color="#ff4db4" style="--swatch-color: #ff4db4" aria-label="Rosa neon"></button>
+                                <button type="button" class="palette-swatch" data-color="#c7ff30" style="--swatch-color: #c7ff30" aria-label="Lima neon"></button>
+                                <button type="button" class="palette-swatch" data-color="#ffb72b" style="--swatch-color: #ffb72b" aria-label="Ambar neon"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-light" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-neon" type="submit">
+                        <i class="bi bi-check2-circle"></i>
+                        Guardar categoria
                     </button>
                 </div>
             </form>

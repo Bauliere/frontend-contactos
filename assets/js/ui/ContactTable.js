@@ -54,7 +54,7 @@ export class ContactTable {
             return '<span class="data-chip">Sin datos</span>';
         }
 
-        return dataRows.map((data) => `
+        return this.sortedData(dataRows).map((data) => `
             <span class="data-chip">
                 <strong>${this.displayType(data.tipo_dato)}</strong>
                 ${this.escape(data.valor)}
@@ -81,6 +81,20 @@ export class ContactTable {
             Correo: 'Correo',
             Direccion: 'Direccion',
         }[type] || type;
+    }
+
+    sortedData(dataRows) {
+        const order = {
+            Telefono: 1,
+            Correo: 2,
+            Direccion: 3,
+        };
+
+        return [...dataRows].sort((a, b) => {
+            const orderA = order[a.tipo_dato] || 99;
+            const orderB = order[b.tipo_dato] || 99;
+            return orderA - orderB || a.id_dato - b.id_dato;
+        });
     }
 
     escape(value) {

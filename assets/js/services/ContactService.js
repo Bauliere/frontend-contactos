@@ -8,6 +8,17 @@ export class ContactService {
         return response.data || [];
     }
 
+    async createCategory(payload) {
+        const response = await this.api.post('/categorias', {
+            nombre_categoria: payload.nombre_categoria,
+            descripcion: payload.descripcion || null,
+            color_categoria: payload.color_categoria,
+        });
+
+        const created = Array.isArray(response.data) ? response.data[0] : response.data;
+        return Number(created?.id_categoria);
+    }
+
     async getContacts() {
         const response = await this.api.get('/contactos');
         return this.groupContacts(response.data || []);

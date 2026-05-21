@@ -2,6 +2,7 @@ import { ApiClient } from './api/ApiClient.js';
 import { ContactService } from './services/ContactService.js';
 import { ContactTable } from './ui/ContactTable.js';
 import { ContactModal } from './ui/ContactModal.js';
+import { CategoryModal } from './ui/CategoryModal.js';
 import { DeleteModal } from './ui/DeleteModal.js';
 import { FeedbackModal } from './ui/FeedbackModal.js';
 import { API_BASE } from './config.js';
@@ -20,6 +21,10 @@ export class App {
             document.querySelector('#contactModal'),
             document.querySelector('#contactForm'),
         );
+        this.categoryModal = new CategoryModal(
+            document.querySelector('#categoryModal'),
+            document.querySelector('#categoryForm'),
+        );
         this.deleteModal = new DeleteModal(
             document.querySelector('#deleteModal'),
             document.querySelector('#confirmDeleteButton'),
@@ -36,6 +41,10 @@ export class App {
     bindEvents() {
         document.querySelector('#addContactButton').addEventListener('click', () => {
             this.contactModal.openCreate(this.categories);
+        });
+
+        document.querySelector('#addCategoryButton').addEventListener('click', () => {
+            this.categoryModal.open();
         });
 
         document.querySelector('#refreshButton').addEventListener('click', () => this.load());
@@ -61,6 +70,7 @@ export class App {
         };
 
         this.contactModal.onSubmit = (event) => this.saveContact(event);
+        this.categoryModal.onSubmit = (payload) => this.saveCategory(payload);
         this.deleteModal.onConfirm = (contact) => this.deleteContact(contact);
     }
 
@@ -94,6 +104,16 @@ export class App {
             this.feedbackModal.show('Registro actualizado', 'El contacto fue actualizado correctamente.');
         } catch (error) {
             this.feedbackModal.show('No se pudo guardar', error.message);
+        }
+    }
+
+    async saveCategory(payload) {
+        try {
+            await this.service.createCategory(payload);
+            await this.load();
+            this.feedbackModal.show('Categoria agregada', 'La categoria fue creada y ya esta disponible para asignarla a contactos.');
+        } catch (error) {
+            this.feedbackModal.show('No se pudo guardar la categoria', error.message);
         }
     }
 
